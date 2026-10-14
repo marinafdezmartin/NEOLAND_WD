@@ -2,11 +2,20 @@
 /* .nombreClase */
 /* #nombreID */
 
+/* VARIABLES */
+:root {
+  --ee: 15px;
+  --br: 8px;
+}
+
 /* Si quiero afectar a TODAS las etiquetas hay que empezar con (*) */
 * {
   /* margin: 5px;
   padding: 10px; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
   background-color: rgb(244, 242, 229);
 }
 
@@ -22,12 +31,19 @@ li {
   font-weight: bolder;
 }
 
+section {
+  padding: var(--ee);
+}
+
 .orden {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   gap: 15px;
+  @media (max: width 480px;) {
+    flex-direction: column;
+  }
 }
 
 .enlace_menu_header {
@@ -59,11 +75,68 @@ li {
 .btn {
   background-color: #006c3d;
   color: aliceblue;
-  border-radius: 8px;
+  border-radius: var(--br);
   border: solid 1px #006c3d;
   box-shadow: 0 5px 5px rgb(42, 42, 42);
   padding: 5px;
+}
 
-  &:hover {
+.info_section {
+  background-color: #eeeacf;
+
+  .columna {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 2fr 1fr;
+
+    img {
+      max-height: 200px;
+    }
   }
+}
+
+.orden_columna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  box-sizing: border-box;
+  border: solid 1px #8c7463;
+  border-radius: var(--br);
+  padding: 10px;
+  background-color: #eeeacf;
+}
+
+#services > .orden_columna {
+  width: 100%;
+}
+
+.columna_responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact_form {
+  border-radius: var(--br);
+  border: solid 1px #8c7463;
+  padding: var(--33);
+  background-color: #eeeacf;
+  min-width: 500px;
+  .texto {
+    width: 90%;
+    padding: var(--ee);
+    border: none;
+    border-radius: var(--br);
+  }
+}
+
+#contact {
+  background-color: #eeeacf;
 }
