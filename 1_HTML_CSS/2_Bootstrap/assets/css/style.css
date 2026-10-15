@@ -1,0 +1,441 @@
+/* VARIABLES GENERALES */
+
+:root {
+  --color-bg: #f4f1ea;
+  --color-primary: #18392b;
+  --color-text: #222222;
+  --color-hover: #365c45;
+}
+
+/* --- NAVBAR --- */
+
+.navbar-noma {
+  background-color: var(--color-bg);
+  padding: 20px 5%;
+}
+
+.navbar-noma .container-fluid {
+  padding: 0;
+}
+
+/* LOGO */
+
+.navbar-noma .navbar-brand {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.navbar-noma .navbar-brand span {
+  color: #a7b39c;
+}
+
+/* CONTENEDOR DE NAVEGACIÓN */
+
+.navbar-noma .nav-overflow {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+/* ENLACES */
+
+.navbar-noma .nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  background: transparent;
+}
+
+.navbar-noma .nav-link {
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 5px;
+  border-radius: 0;
+  transition: color 0.3s ease;
+}
+
+/* ENLACE ACTIVO */
+
+.navbar-noma .nav-pills .nav-link.active {
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* HOVER DE ENLACES */
+
+.navbar-noma .nav-link:hover {
+  color: #78917c;
+  background: none;
+}
+
+/* BOTÓN PLAN YOUR TRIP */
+
+.navbar-noma .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+/* HOVER DEL BOTÓN */
+
+.navbar-noma .nav-cta:hover {
+  background-color: var(--color-hover);
+  color: white;
+}
+
+/* ==============================
+   CARRUSEL
+============================== */
+
+.carousel-item img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* --- DESTINOS (services) --- */
+
+#services {
+  background-color: var(--color-bg);
+  padding: 80px 5%;
+}
+
+/* ENCABEZADO */
+
+.destinations-header {
+  margin-bottom: 35px;
+  gap: 20px;
+}
+
+.section-label {
+  display: block;
+  color: #78917c;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.destinations-header h2 {
+  color: var(--color-primary);
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.title-dot {
+  color: #a7b39c;
+}
+
+.destinations-header p {
+  color: #66776b;
+  font-size: 15px;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* BOTONES DEL CARRUSEL */
+
+.carousel-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#services .carousel-buttons button {
+  background-color: transparent;
+  border: 1px solid #b9c4b9;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  color: var(--color-primary);
+  transition: background-color 0.3s ease;
+}
+
+#services .carousel-buttons button:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* TARJETAS */
+
+.destination-card {
+  border: none;
+  background-color: transparent;
+  border-radius: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* FOTOS */
+
+#services .destination-card .card-img-top {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* TEXTO */
+
+.destination-card .card-body {
+  padding: 20px 0;
+}
+
+.destination-label {
+  color: #78917c;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.destination-card .card-title {
+  color: var(--color-primary);
+  font-size: 23px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.destination-card .card-text {
+  color: #66776b;
+  font-size: 14px;
+}
+
+/* CONTACT */
+
+#contact {
+  background-color: var(--color-primary);
+  padding: 100px 5%;
+}
+
+/* TEXTO IZQUIERDA */
+
+.contact-info .section-label {
+  color: #a7bca9;
+}
+
+.contact-info h2 {
+  color: white;
+  font-size: clamp(36px, 4.5vw, 65px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin: 25px 0;
+}
+
+.contact-info h2 span {
+  color: #a7bca9;
+}
+
+.contact-info > p {
+  color: #d2ded5;
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 450px;
+}
+
+/* BENEFICIOS */
+
+.contact-benefits {
+  margin-top: 35px;
+}
+
+.contact-benefits p {
+  color: #d2ded5;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.contact-benefits i {
+  color: #a7bca9;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+/* TARJETA FORMULARIO */
+
+.contact-form {
+  background-color: var(--color-bg);
+  padding: 45px;
+  border-radius: 20px;
+}
+
+.contact-form h3 {
+  color: var(--color-primary);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.contact-form > p {
+  color: #66776b;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* ETIQUETAS */
+
+.contact-form .form-label {
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* INPUTS, SELECT Y TEXTAREA */
+
+.contact-form .form-control,
+.contact-form .form-select {
+  background-color: white;
+  border: 1px solid #d8dfd8;
+  border-radius: 10px;
+  padding: 13px 15px;
+  color: var(--color-primary);
+  font-size: 14px;
+}
+
+/* PLACEHOLDERS */
+
+.contact-form .form-control::placeholder {
+  color: #9aa79c;
+}
+
+/* EFECTO FOCUS (con un click)*/
+
+.contact-form .form-control:focus,
+.contact-form .form-select:focus {
+  border-color: #78917c;
+  box-shadow: 0 0 0 3px rgba(120, 145, 124, 0.15);
+  outline: none;
+}
+
+/* CHECKBOX */
+
+.contact-form .form-check-label {
+  color: #66776b;
+  font-size: 12px;
+}
+
+.contact-form .form-check-input {
+  border-color: #9aa79c;
+}
+
+.contact-form .form-check-input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* BOTÓN ENVIAR */
+
+.contact-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 25px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.contact-submit:hover {
+  background-color: #365c45;
+  color: white;
+}
+
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 768px) {
+  /* NAVBAR */
+  .navbar-noma {
+    padding: 15px 4%;
+  }
+
+  .navbar-noma .container-fluid {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .navbar-noma .navbar-brand {
+    font-size: 26px;
+  }
+
+  .navbar-noma .nav-overflow {
+    order: 3;
+    flex: 1 1 100%;
+  }
+
+  .navbar-noma .nav {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .navbar-noma .nav-link {
+    font-size: 12px;
+    padding: 8px 4px;
+  }
+
+  .navbar-noma .nav-cta {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+
+  /* DESTINOS */
+  #services {
+    padding: 60px 5%;
+  }
+
+  .destinations-header {
+    align-items: flex-start !important;
+  }
+
+  #services .destination-card .card-img-top {
+    height: 260px;
+  }
+
+  .destination-card .card-title {
+    font-size: 19px;
+  }
+
+  /* CONTACT */
+  #contact {
+    padding: 60px 5%;
+  }
+
+  .contact-info h2 {
+    font-size: 40px;
+  }
+
+  .contact-form {
+    padding: 25px;
+  }
+
+  .contact-form h3 {
+    font-size: 27px;
+  }
+}

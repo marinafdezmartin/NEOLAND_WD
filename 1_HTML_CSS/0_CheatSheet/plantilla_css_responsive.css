@@ -120,7 +120,7 @@ p {
 
 a {
   color: var(--color-primary);
-  text-underline-offset: 0.15em;
+  text-decoration: none;
 }
 
 :focus-visible {
