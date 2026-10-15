@@ -1,89 +1,162 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ejemplo de plantilla CSS responsive</title>
-  <!-- Ambos archivos deben estar en la misma carpeta. -->
-  <link rel="stylesheet" href="plantilla_css_responsive.css" />
-</head>
-<body>
-  <header class="container section">
-    <div class="flex-between">
-      <strong>Mi sitio web</strong>
-      <nav aria-label="Navegación principal">
-        <ul class="nav-list">
-          <li><a href="#tarjetas">Tarjetas</a></li>
-          <li><a href="#columnas">Columnas</a></li>
-          <li><a href="#formulario">Formulario</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo de plantilla CSS responsive</title>
+    <!-- Ambos archivos deben estar en la misma carpeta. -->
+    <link rel="stylesheet" href="plantilla_css_responsive.css" />
+  </head>
+  <body>
+    <header class="container section">
+      <div class="flex-between">
+        <strong>Mi sitio web</strong>
+        <nav aria-label="Navegación principal">
+          <ul class="nav-list">
+            <li><a href="#tarjetas">Tarjetas</a></li>
+            <li><a href="#columnas">Columnas</a></li>
+            <li><a href="#formulario">Formulario</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  <main>
-    <section class="section section--muted">
-      <div class="container">
-        <h1>Diseño responsive con CSS</h1>
-        <p class="prose">Reduce el ancho de esta ventana. Algunas columnas se reorganizan automáticamente con <code>auto-fit</code>; otras cambian gracias a <code>@media</code>.</p>
-        <div class="cluster mt-lg">
-          <a class="btn btn--full-mobile" href="#tarjetas">Ver tarjetas</a>
-          <a class="btn btn--outline btn--full-mobile" href="#columnas">Ver columnas</a>
+    <main>
+      <section class="section section--muted">
+        <div class="container">
+          <h1>Diseño responsive con CSS</h1>
+          <p class="prose">
+            Reduce el ancho de esta ventana. Algunas columnas se reorganizan
+            automáticamente con <code>auto-fit</code>; otras cambian gracias a
+            <code>@media</code>.
+          </p>
+          <div class="cluster mt-lg">
+            <a class="btn btn--full-mobile" href="#tarjetas">Ver tarjetas</a>
+            <a class="btn btn--outline btn--full-mobile" href="#columnas"
+              >Ver columnas</a
+            >
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="tarjetas">
-      <div class="container">
-        <h2>1. Tarjetas con auto-fit</h2>
-        <p class="prose">No necesitan media queries: caben tantas columnas como permita el ancho del contenedor.</p>
-        <div class="grid-auto mt-lg">
-          <article class="card"><h3>Tarjeta 1</h3><p>El ancho mínimo por columna es 16rem.</p></article>
-          <article class="card"><h3>Tarjeta 2</h3><p>Si no cabe, baja a la siguiente fila.</p></article>
-          <article class="card"><h3>Tarjeta 3</h3><p>El espacio restante se distribuye con 1fr.</p></article>
-          <article class="card"><h3>Tarjeta 4</h3><p>Prueba cambiando el tamaño de la ventana.</p></article>
-          <article class="card"><h3>Tarjeta 5</h3><p>La separación depende de --layout-gap.</p></article>
-          <article class="card"><h3>Tarjeta 6</h3><p>Modifica la variable --card-min para probar.</p></article>
+      <section class="section" id="tarjetas">
+        <div class="container">
+          <h2>1. Tarjetas con auto-fit</h2>
+          <p class="prose">
+            No necesitan media queries: caben tantas columnas como permita el
+            ancho del contenedor.
+          </p>
+          <div class="grid-auto mt-lg">
+            <article class="card">
+              <h3>Tarjeta 1</h3>
+              <p>El ancho mínimo por columna es 16rem.</p>
+            </article>
+            <article class="card">
+              <h3>Tarjeta 2</h3>
+              <p>Si no cabe, baja a la siguiente fila.</p>
+            </article>
+            <article class="card">
+              <h3>Tarjeta 3</h3>
+              <p>El espacio restante se distribuye con 1fr.</p>
+            </article>
+            <article class="card">
+              <h3>Tarjeta 4</h3>
+              <p>Prueba cambiando el tamaño de la ventana.</p>
+            </article>
+            <article class="card">
+              <h3>Tarjeta 5</h3>
+              <p>La separación depende de --layout-gap.</p>
+            </article>
+            <article class="card">
+              <h3>Tarjeta 6</h3>
+              <p>Modifica la variable --card-min para probar.</p>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section section--muted" id="columnas">
-      <div class="container">
-        <h2>2. Grid de tres columnas con @media</h2>
-        <p class="prose">En móvil hay una columna; desde 48rem, dos; desde 64rem, tres.</p>
-        <div class="grid-3 mt-lg">
-          <article class="card"><h3>Bloque A</h3><p>Una columna en pantallas pequeñas.</p></article>
-          <article class="card"><h3>Bloque B</h3><p>Dos columnas desde 48rem.</p></article>
-          <article class="card"><h3>Bloque C</h3><p>Tres columnas desde 64rem.</p></article>
+      <section class="section section--muted" id="columnas">
+        <div class="container">
+          <h2>2. Grid de tres columnas con @media</h2>
+          <p class="prose">
+            En móvil hay una columna; desde 48rem, dos; desde 64rem, tres.
+          </p>
+          <div class="grid-3 mt-lg">
+            <article class="card">
+              <h3>Bloque A</h3>
+              <p>Una columna en pantallas pequeñas.</p>
+            </article>
+            <article class="card">
+              <h3>Bloque B</h3>
+              <p>Dos columnas desde 48rem.</p>
+            </article>
+            <article class="card">
+              <h3>Bloque C</h3>
+              <p>Tres columnas desde 64rem.</p>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <h2>3. Contenido y barra lateral automática</h2>
-        <div class="with-sidebar mt-lg">
-          <article class="card"><h3>Contenido principal</h3><p>Este bloque suele ser más ancho. Si no cabe el contenido y la barra lateral en la misma fila, uno queda debajo del otro sin necesitar una media query.</p></article>
-          <aside class="card"><h3>Barra lateral</h3><p>Este bloque se recoloca automáticamente.</p></aside>
+      <section class="section">
+        <div class="container">
+          <h2>3. Contenido y barra lateral automática</h2>
+          <div class="with-sidebar mt-lg">
+            <article class="card">
+              <h3>Contenido principal</h3>
+              <p>
+                Este bloque suele ser más ancho. Si no cabe el contenido y la
+                barra lateral en la misma fila, uno queda debajo del otro sin
+                necesitar una media query.
+              </p>
+            </article>
+            <aside class="card">
+              <h3>Barra lateral</h3>
+              <p>Este bloque se recoloca automáticamente.</p>
+            </aside>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section section--muted" id="formulario">
-      <div class="container container--narrow">
-        <h2>4. Formulario y botones</h2>
-        <form class="flex-col" action="#" method="get">
-          <div class="field"><label for="nombre">Nombre</label><input class="input" type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" /></div>
-          <div class="field"><label for="mensaje">Mensaje</label><textarea class="input" id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje"></textarea></div>
-          <div class="cluster"><button class="btn btn--full-mobile" type="submit">Enviar</button><button class="btn btn--outline btn--full-mobile" type="reset">Limpiar</button></div>
-        </form>
-      </div>
-    </section>
-  </main>
+      <section class="section section--muted" id="formulario">
+        <div class="container container--narrow">
+          <h2>4. Formulario y botones</h2>
+          <form class="flex-col" action="#" method="get">
+            <div class="field">
+              <label for="nombre">Nombre</label
+              ><input
+                class="input"
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Escribe tu nombre"
+              />
+            </div>
+            <div class="field">
+              <label for="mensaje">Mensaje</label
+              ><textarea
+                class="input"
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                placeholder="Escribe tu mensaje"
+              ></textarea>
+            </div>
+            <div class="cluster">
+              <button class="btn btn--full-mobile" type="submit">Enviar</button
+              ><button class="btn btn--outline btn--full-mobile" type="reset">
+                Limpiar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
 
-  <footer class="container section">
-    <p class="text-center text-muted">Ejemplo didáctico · CSS reutilizable y responsive</p>
-  </footer>
-</body>
+    <footer class="container section">
+      <p class="text-center text-muted">
+        Ejemplo didáctico · CSS reutilizable y responsive
+      </p>
+    </footer>
+  </body>
 </html>
