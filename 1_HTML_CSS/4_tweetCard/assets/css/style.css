@@ -1,0 +1,488 @@
+/* ======================================================================
+   PLANTILLA CSS GENERAL · RESPONSIVE + REUTILIZABLE
+   Pensada para aprender y para proyectos pequeños/medianos.
+
+   CÓMO USARLA
+   1. Enlaza este archivo desde tu HTML: <link rel="stylesheet" href="style.css">
+   2. Personaliza las variables de :root (colores, tamaños, espaciados).
+   3. Usa las clases de layout en el HTML y combina las que necesites.
+   4. Escribe al final los estilos EXCLUSIVOS de tu proyecto.
+   5. No necesitas utilizar todas las clases en cada web: elimina las sobrantes.
+
+   ENFOQUE: MOBILE FIRST
+   Diseñamos primero para un ancho pequeño. Solo añadimos @media si el
+   contenido necesita reorganizarse a partir de cierto ancho.
+   ====================================================================== */
+
+/* ======================================================================
+   1. VARIABLES GLOBALES (DESIGN TOKENS)
+   ====================================================================== */
+:root {
+  /* Colores de ejemplo: cámbialos en cada proyecto. */
+  --color-primary: #090909;
+  --color-primary-hover: #17489f;
+  --color-text: #202632;
+  --color-muted: #5a6473;
+  --color-background: #ffffff;
+  --color-surface: #f5f7fa;
+  --color-border: #dce2ea;
+  --color-focus: #17489f;
+
+  /* Tipografía: evita fijar tamaños diminutos. */
+  --font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: 1rem;
+  --font-title: clamp(2rem, 1.3rem + 3vw, 3.5rem);
+  /* clamp(mínimo, tamaño adaptable, máximo). */
+
+  /* Escala de espaciado. Reutilízala en gap, margin y padding. */
+  --space-1: 0.25rem; /* 4 px si 1rem equivale a 16 px */
+  --space-2: 0.5rem; /* 8 px */
+  --space-3: 0.75rem; /* 12 px */
+  --space-4: 1rem; /* 16 px */
+  --space-5: 1.5rem; /* 24 px */
+  --space-6: 2rem; /* 32 px */
+  --space-7: 3rem; /* 48 px */
+  --space-8: 4rem; /* 64 px */
+
+  /* Espaciados fluidos: se adaptan sin @media. */
+  --page-gutter: clamp(1rem, 3vw, 2rem); /* Espacio lateral */
+  --section-space: clamp(2.5rem, 6vw, 5rem); /* Entre secciones */
+  --layout-gap: clamp(1rem, 2vw, 1.5rem); /* Entre tarjetas/columnas */
+
+  /* Anchura, bordes y sombras coherentes. */
+  --container-max: 75rem; /* Limita la longitud de líneas en pantallas grandes */
+  --content-max: 65ch; /* Aproximadamente 65 caracteres por línea */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --border-standard: 1px solid var(--color-border);
+  --shadow-soft: 0 4px 20px rgb(0 0 0 / 0.07);
+}
+
+/* ======================================================================
+   2. BASE / RESET SUAVE
+   Reglas que afectan a etiquetas HTML, no a clases.
+   ====================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* Padding y border se incluyen en el tamaño final del elemento. */
+}
+
+html {
+  scroll-behavior: smooth; /* Enlaces a #secciones: desplazamiento suave. */
+}
+
+body {
+  margin: 0; /* Quita el margen por defecto del navegador. */
+  min-height: 100vh;
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%; /* Nunca más ancho que su contenedor. */
+}
+
+img {
+  height: auto; /* Mantiene la proporción original. */
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit; /* No usar una tipografía distinta en los formularios. */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.2;
+  text-wrap: balance; /* Evita títulos con una última palabra aislada. */
+}
+
+h1 {
+  font-size: var(--font-title);
+}
+
+p {
+  overflow-wrap: break-word; /* Ayuda con palabras o URLs muy largas. */
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px; /* Facilita la navegación con teclado. */
+}
+
+[id] {
+  scroll-margin-top: var(--space-5);
+  /* Deja algo de aire al navegar hacia una sección por su ID. */
+}
+
+/* ======================================================================
+   3. CONTENEDORES Y ESPACIADO
+   - margin: espacio exterior.
+   - padding: espacio interior.
+   - gap: separación entre hijos en Grid/Flex.
+   ====================================================================== */
+.container {
+  /* Aprovecha el ancho disponible, con márgenes laterales automáticos. */
+  width: min(
+    var(--container-max),
+    calc(100% - var(--page-gutter) - var(--page-gutter))
+  );
+  margin-inline: auto;
+}
+
+.container--narrow {
+  --container-max: 48rem; /* Variante: contenido más estrecho. */
+}
+
+.section {
+  padding-block: var(--section-space); /* Padding arriba y abajo. */
+}
+
+.section--muted {
+  background-color: var(--color-surface); /* Variante de fondo suave. */
+}
+
+.prose {
+  max-width: var(--content-max); /* Lectura cómoda en párrafos largos. */
+}
+
+/* Clases de padding útiles; no necesitas crear una por cada píxel. */
+.p-sm {
+  padding: var(--space-3);
+}
+.p-md {
+  padding: var(--space-4);
+}
+.p-lg {
+  padding: var(--space-6);
+}
+
+/* Margen solo cuando lo necesites: evita márgenes arbitrarios por todas partes. */
+.mt-md {
+  margin-top: var(--space-4);
+}
+.mt-lg {
+  margin-top: var(--space-6);
+}
+
+/* ======================================================================
+   4. FLEXBOX · DISTRIBUCIÓN EN UNA DIMENSIÓN
+   Usa Flexbox para menús, filas, botones, bloques centrados, etc.
+   ====================================================================== */
+.flex {
+  display: flex;
+  gap: var(--gap, var(--space-4));
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap, var(--space-4));
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap, var(--space-4));
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Si ya no caben, saltan a otra línea. */
+  gap: var(--gap, var(--space-4));
+}
+
+.flex-wrap {
+  flex-wrap: wrap; /* Combínala con .flex si quieres salto de línea. */
+}
+
+/* También llamada "cluster": botones, etiquetas o enlaces que se recolocan. */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap, var(--space-3));
+}
+
+/* Modificadores de separación, aplicables a .flex/.cluster/.flex-col, etc. */
+.gap-sm {
+  --gap: var(--space-2);
+}
+.gap-lg {
+  --gap: var(--space-6);
+}
+
+/* ======================================================================
+   5. CSS GRID · DISTRIBUCIÓN EN FILAS Y COLUMNAS
+   auto-fit = tantas columnas como quepan; las vacías se colapsan.
+   minmax() = ancho mínimo y máximo de cada columna.
+   1fr = repartir el espacio disponible proporcionalmente.
+   ====================================================================== */
+.grid {
+  display: grid;
+  gap: var(--gap, var(--layout-gap));
+}
+
+.grid-auto {
+  display: grid;
+  gap: var(--gap, var(--layout-gap));
+  /* Las tarjetas cambian automáticamente de fila según el ancho. */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--card-min, 16rem)), 1fr)
+  );
+}
+
+.grid-auto--compact {
+  --card-min: 12rem;
+} /* Caben más por fila. */
+.grid-auto--wide {
+  --card-min: 20rem;
+} /* Caben menos por fila. */
+
+/* Grid de dos columnas: abajo hay una @media que lo activa en pantallas amplias. */
+.grid-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* Móvil: una columna. */
+  gap: var(--layout-gap);
+}
+
+/* Igual, pero para tres columnas en pantallas suficientemente anchas. */
+.grid-3 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* Móvil: una columna. */
+  gap: var(--layout-gap);
+}
+
+/* Layout principal + barra lateral: se recoloca sin media query. */
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-gap);
+  align-items: flex-start;
+}
+
+.with-sidebar > :first-child {
+  flex: 1 1 28rem; /* Contenido principal: suele ocupar más. */
+  min-width: 0; /* Evita desbordes inesperados. */
+}
+
+.with-sidebar > :last-child {
+  flex: 1 1 16rem; /* Sidebar: puede bajar si falta espacio. */
+  min-width: 0;
+}
+
+/* ======================================================================
+   6. COMPONENTES REUTILIZABLES
+   Son puntos de partida: adapta el aspecto a cada web.
+   ====================================================================== */
+.card {
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background-color: var(--color-surface);
+  border: var(--border-standard);
+  border-radius: var(--radius-md);
+  min-width: 0; /* Importante dentro de Grid/Flex. */
+}
+
+.card__image {
+  width: 100%;
+  aspect-ratio: 16 / 10; /* Fotos con proporción consistente. */
+  object-fit: cover; /* Recorta la foto sin deformarla. */
+  border-radius: var(--radius-sm);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 2.75rem; /* Área de pulsación cómoda. */
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Segundo estilo del mismo botón: HTML class="btn btn--outline". */
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-surface);
+}
+
+/* Campos de formulario de apariencia consistente. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-standard);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Base para una lista de navegación horizontal adaptable. */
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ======================================================================
+   7. UTILIDADES PEQUEÑAS
+   Úsalas solo cuando aporten claridad: no hace falta duplicar cada propiedad.
+   ====================================================================== */
+.text-center {
+  text-align: center;
+}
+.text-muted {
+  color: var(--color-muted);
+}
+.full-width {
+  width: 100%;
+}
+.rounded {
+  border-radius: var(--radius-md);
+}
+.border {
+  border: var(--border-standard);
+}
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+/* Oculta visualmente, pero permite que lectores de pantalla lo lean. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ======================================================================
+   8. MEDIA QUERIES · CAMBIOS SEGÚN EL ANCHO DE LA VENTANA
+
+   Piensa en @media como un "SI":
+   @media (min-width: 48rem) significa:
+   "SI la ventana mide AL MENOS 48rem, aplica estas reglas".
+
+   Por defecto, .grid-2 y .grid-3 tienen una columna (móvil primero).
+   A partir de 48rem (~768px con 1rem=16px) pasan a dos columnas.
+   A partir de 64rem, .grid-3 pasa a tres columnas.
+
+   No son tamaños universales para móvil/tablet/PC: elige el punto donde
+   tu CONTENIDO lo necesite. No hay que crear reglas para cada dispositivo.
+   ====================================================================== */
+@media (min-width: 48rem) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Ejemplo opcional: botón de ancho completo SOLO en móvil pequeño. */
+@media (max-width: 30rem) {
+  .btn--full-mobile {
+    width: 100%;
+  }
+}
+
+/* ======================================================================
+   9. ACCESIBILIDAD: RESPETAR LA PREFERENCIA DE MENOS MOVIMIENTO
+   ====================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn {
+    transition: none;
+  }
+}
+
+/* ======================================================================
+   10. ESTILOS ESPECÍFICOS DE TU PROYECTO (AÑÁDELOS AQUÍ)
+
+   Aquí sí puedes seguir el orden de las secciones de tu HTML:
+   header -> hero -> servicios -> contacto -> footer.
+
+   Ejemplo:
+   .hero { ... }
+   .site-footer { ... }
+
+   CONSEJO: no copies reglas duplicadas si puedes combinar una clase
+   reutilizable con otra clase específica para ese componente.
+   ====================================================================== */
+
+/* ==================================
+   TWEET
+================================== */
+
+/* Imagen de perfil */
+.tweet-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
