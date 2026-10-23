@@ -103,3 +103,13 @@ nombreApellido();
     }
   });
 })();
+
+// EJERCICIO 14
+const parrafoEj14 = document.getElementById("parrafo-ej14");
+const botonEj14 = document.getElementById("boton-ej14");
+
+function borrarTexto() {
+  parrafoEj14.textContent = " ";
+}
+
+botonEj14.addEventListener("click", borrarTexto);
