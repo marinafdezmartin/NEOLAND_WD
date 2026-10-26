@@ -124,7 +124,7 @@ function calculadoraEj7() {
 
 botonEj7.addEventListener("click", calculadoraEj7);
 
-// EJERCICIO 8 -
+// EJERCICIO 8 
 
 const inputEj8 = document.getElementById("input-ej8");
 const botonEj8 = document.getElementById("boton-ej8");

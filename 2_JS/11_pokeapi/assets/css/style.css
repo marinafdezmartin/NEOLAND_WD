@@ -1,0 +1,50 @@
+#pokedex {
+  display: grid;
+  /* Crea 3 columnas iguales. repeat(3, 1fr) significa repetir 3 veces una columna que ocupa una fracción del espacio disponible */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.pokemon-card {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.pokemon-card img {
+  width: 120px;
+  height: 120px;
+  /* Mantiene la proporción original de la imagen, ajustándola dentro del espacio de 120x120px sin recortarla ni deformarla */
+  object-fit: contain;
+}
+
+.pokemon-types {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pokemon-types span {
+  /* Espacio interior: 5px arriba y abajo 10px a izquierda y derecha */
+  padding: 5px 10px;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  #pokedex {
+    /* Cambia las 3 columnas originales por 2 columnas iguales */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  #pokedex {
+    /* Muestra una sola columna. Cada tarjeta ocupa todo el ancho disponible del grid */
+    grid-template-columns: 1fr;
+  }
+}

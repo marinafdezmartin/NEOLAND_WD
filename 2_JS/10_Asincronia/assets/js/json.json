@@ -1,0 +1,11 @@
+{
+  "color": "naranja",
+  "textura": "rugoso",
+  "peso": "1kg",
+  "forma": "redonda",
+  "cantidad": 1,
+  "fabricante": {
+    "nombre": "Marina",
+    "direccion": "Avenida de Europa, 15"
+  }
+}
