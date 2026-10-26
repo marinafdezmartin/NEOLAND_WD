@@ -92,3 +92,105 @@ for (let i = 1; i <= 50; i++) {
   }
   cuerpo.appendChild(mensajeFizz);
 }
+
+import { calcularOperacion } from "./operaciones.js";
+
+// EJERCICIO 7
+const inputEj7A = document.getElementById("input-ej7-A");
+const inputEj7B = document.getElementById("input-ej7-B");
+const selectEj7 = document.getElementById("select-ej7");
+const botonEj7 = document.getElementById("boton-ej7");
+const resultadoEj7 = document.getElementById("resultado-ej7");
+
+function calculadoraEj7() {
+  if (inputEj7A.value === "" || inputEj7B.value === "") {
+    resultadoEj7.textContent = "Introduce los dos números";
+    return;
+  }
+
+  const numeroA = Number(inputEj7A.value);
+  const numeroB = Number(inputEj7B.value);
+  const operacion = selectEj7.value;
+
+  if (operacion === "dividir" && numeroB === 0) {
+    resultadoEj7.textContent = "No se puede dividir entre cero";
+    return;
+  }
+
+  const resultado = calcularOperacion(numeroA, numeroB, operacion);
+
+  resultadoEj7.textContent = `Resultado: ${resultado}`;
+}
+
+botonEj7.addEventListener("click", calculadoraEj7);
+
+// EJERCICIO 8 -
+
+const inputEj8 = document.getElementById("input-ej8");
+const botonEj8 = document.getElementById("boton-ej8");
+const resultadoEj8 = document.getElementById("resultado-ej8");
+
+function invertirNombre(nombreCompleto) {
+  const palabras = nombreCompleto.trim().split(" ");
+  const nombreInvertido = palabras.reverse().join(" ").toUpperCase();
+
+  return nombreInvertido;
+}
+
+function mostrarNombreInvertido() {
+  resultadoEj8.textContent = invertirNombre(inputEj8.value);
+}
+
+botonEj8.addEventListener("click", mostrarNombreInvertido);
+
+// EJERCICIO 9
+
+const inputEj9 = document.getElementById("input-ej9");
+const botonEj9 = document.getElementById("boton-ej9");
+const tablaEj9 = document.getElementById("tabla-ej9");
+const mensajeEj9 = document.getElementById("mensaje-ej9");
+
+function generarTabla() {
+  tablaEj9.innerHTML = "";
+  mensajeEj9.textContent = "";
+
+  if (inputEj9.value === "") {
+    mensajeEj9.textContent = "Introduce un número";
+    return;
+  }
+
+  const numero = Number(inputEj9.value);
+
+  for (let i = 1; i <= 10; i++) {
+    const resultado = numero * i;
+
+    const fila = document.createElement("tr");
+    const celdaOperacion = document.createElement("td");
+    const celdaResultado = document.createElement("td");
+
+    celdaOperacion.textContent = `${numero} × ${i}`;
+    celdaResultado.textContent = resultado;
+
+    fila.appendChild(celdaOperacion);
+    fila.appendChild(celdaResultado);
+
+    tablaEj9.appendChild(fila);
+  }
+}
+
+botonEj9.addEventListener("click", generarTabla);
+
+// EJERCICIO 10
+
+const palabrasEj10 = ["hola", "mundo", "javascript", "es", "genial"];
+const resultadoEj10 = document.getElementById("resultado-ej10");
+
+function capitalizarPalabras(palabras) {
+  const palabrasCapitalizadas = palabras.map((palabra) => {
+    return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+  });
+
+  return palabrasCapitalizadas.join(" ");
+}
+
+resultadoEj10.textContent = capitalizarPalabras(palabrasEj10);
