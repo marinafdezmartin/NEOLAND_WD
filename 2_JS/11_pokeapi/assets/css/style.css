@@ -1,50 +1,459 @@
-#pokedex {
-  display: grid;
-  /* Crea 3 columnas iguales. repeat(3, 1fr) significa repetir 3 veces una columna que ocupa una fracción del espacio disponible */
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
+/* =========================================
+   ESTILOS GENERALES
+========================================= */
+
+body {
+  /* Quitamos los márgenes predeterminados */
+  margin: 0;
+
+  /* Espacio alrededor de la página */
+  padding: 30px 20px;
+
+  /* Fondo blanco grisáceo muy suave */
+  background-color: #f7f8f7;
+
+  /* Color general del texto */
+  color: #263238;
+
+  /* Tipografía principal */
+  font-family: Arial, sans-serif;
 }
+
+/* TÍTULO DE LA PÁGINA */
+
+h1 {
+  /* Tipografía con serifa para el toque retro */
+  font-family: Georgia, serif;
+
+  /* Tamaño de letra adaptable */
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+
+  /* Separación respecto a las tarjetas */
+  margin: 0 auto 30px;
+
+  /* Misma anchura máxima que el contenedor */
+  max-width: 1200px;
+}
+
+/* =========================================
+   CONTENEDOR DE TARJETAS
+========================================= */
+
+#contenedor {
+  display: grid;
+
+  /* Tres columnas de igual anchura */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  /* Separación entre tarjetas */
+  gap: 20px;
+
+  /* Limita la anchura total */
+  max-width: 1200px;
+
+  /* Centra el contenedor horizontalmente */
+  margin: 0 auto;
+}
+
+/* =========================================
+   TARJETAS POKÉMON
+========================================= */
 
 .pokemon-card {
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
+  /* Fondo blanco */
+  background-color: #ffffff;
+
+  /* Borde fino */
+  border: 1px solid #dce3e1;
+
+  /* Esquinas redondeadas */
+  border-radius: 16px;
+
+  /* Espacio interior */
+  padding: 24px;
+
+  /* Organiza el contenido verticalmente */
+  display: flex;
+  flex-direction: column;
+
+  /* Centra los elementos horizontalmente */
+  align-items: center;
+
+  /* Separación entre elementos */
+  gap: 12px;
+
+  /* Sombra muy suave */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+
+  /* Indica que la tarjeta es interactiva */
+  cursor: pointer;
+
+  /* Suaviza los cambios del hover */
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
+/* EFECTO AL PASAR EL RATÓN */
+
+.pokemon-card:hover {
+  /* Eleva la tarjeta ligeramente */
+  transform: translateY(-5px);
+
+  /* Aumenta la sombra */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09);
+}
+
+/* NÚMERO DEL POKÉMON */
+
+.pokemon-card p {
+  /* Lo coloca a la izquierda */
+  align-self: flex-start;
+
+  margin: 0;
+
+  color: #84918d;
+  font-size: 13px;
+}
+
+/* IMAGEN DEL POKÉMON */
+
 .pokemon-card img {
-  width: 120px;
-  height: 120px;
-  /* Mantiene la proporción original de la imagen, ajustándola dentro del espacio de 120x120px sin recortarla ni deformarla */
+  width: 150px;
+  height: 150px;
+
+  /* Mantiene las proporciones de la imagen */
   object-fit: contain;
 }
+
+/* NOMBRE DEL POKÉMON */
+
+.pokemon-card h2 {
+  margin: 0;
+
+  /* Tipografía ligeramente clásica */
+  font-family: Georgia, serif;
+
+  font-size: 22px;
+
+  /* Primera letra en mayúscula */
+  text-transform: capitalize;
+}
+
+/* =========================================
+   TIPOS DEL POKÉMON
+========================================= */
 
 .pokemon-types {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .pokemon-types span {
-  /* Espacio interior: 5px arriba y abajo 10px a izquierda y derecha */
-  padding: 5px 10px;
-  background-color: #e0e0e0;
-  border-radius: 15px;
-  font-size: 12px;
+  padding: 6px 14px;
+
+  background-color: #e8eceb;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  /* Texto en mayúsculas */
+  text-transform: uppercase;
+
+  /* Separación entre las letras */
+  letter-spacing: 0.5px;
 }
 
+/* =========================================
+   COLORES SEGÚN EL TIPO DE POKÉMON
+========================================= */
+
+/* Planta */
+.pokemon-types .grass {
+  background-color: #d2e8d5;
+  color: #38644a;
+}
+
+/* Veneno */
+.pokemon-types .poison {
+  background-color: #e7d8f1;
+  color: #754f8f;
+}
+
+/* Fuego */
+.pokemon-types .fire {
+  background-color: #f8d7ca;
+  color: #9c4b37;
+}
+
+/* Agua */
+.pokemon-types .water {
+  background-color: #d7eaf6;
+  color: #426e9e;
+}
+
+/* Eléctrico */
+.pokemon-types .electric {
+  background-color: #f9edba;
+  color: #8b6d23;
+}
+
+/* Volador */
+.pokemon-types .flying {
+  background-color: #dce9f7;
+  color: #547ca3;
+}
+
+/* Bicho */
+.pokemon-types .bug {
+  background-color: #e5ecc8;
+  color: #607b38;
+}
+
+/* Normal */
+.pokemon-types .normal {
+  background-color: #e8e8e5;
+  color: #666660;
+}
+
+/* Tierra */
+.pokemon-types .ground {
+  background-color: #efe0c7;
+  color: #896b42;
+}
+
+/* Roca */
+.pokemon-types .rock {
+  background-color: #e1dacd;
+  color: #776750;
+}
+
+/* Lucha */
+.pokemon-types .fighting {
+  background-color: #f1d1ce;
+  color: #9b4845;
+}
+
+/* Psíquico */
+.pokemon-types .psychic {
+  background-color: #f9dce9;
+  color: #a64d79;
+}
+
+/* Hielo */
+.pokemon-types .ice {
+  background-color: #d6f0ee;
+  color: #407e7c;
+}
+
+/* Fantasma */
+.pokemon-types .ghost {
+  background-color: #ded9ed;
+  color: #67548d;
+}
+
+/* Dragón */
+.pokemon-types .dragon {
+  background-color: #d9dcf7;
+  color: #545b9b;
+}
+
+/* Hada */
+.pokemon-types .fairy {
+  background-color: #f5dcef;
+  color: #975b89;
+}
+
+/* Acero */
+.pokemon-types .steel {
+  background-color: #dde5e9;
+  color: #586e7c;
+}
+
+/* Siniestro */
+.pokemon-types .dark {
+  background-color: #ded8d6;
+  color: #66534c;
+}
+
+/* =========================================
+   MODAL PRINCIPAL
+========================================= */
+
+#pokemon-modal {
+  /* Anchura de la ventana */
+  width: 750px;
+
+  /* Evita que se salga de pantallas pequeñas */
+  max-width: 90vw;
+
+  /* Evita que el modal supere la altura de la pantalla */
+  max-height: 85vh;
+
+  /* Activa scroll si el contenido es demasiado largo */
+  overflow-y: auto;
+
+  /* Incluye el padding dentro de la anchura */
+  box-sizing: border-box;
+
+  /* Fondo blanco */
+  background-color: #ffffff;
+
+  /* Espacio interior */
+  padding: 35px;
+
+  /* Bordes redondeados */
+  border: 1px solid #dce3e1;
+  border-radius: 20px;
+
+  /* Sombra suave */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* Fondo oscuro cuando se abre el modal */
+#pokemon-modal::backdrop {
+  background-color: rgba(30, 45, 40, 0.55);
+}
+
+/* =========================================
+   DISTRIBUCIÓN DEL MODAL
+========================================= */
+
+.modal-layout {
+  /* Divide el modal en dos columnas */
+  display: grid;
+
+  /* Dos columnas del mismo ancho */
+  grid-template-columns: 1fr 1fr;
+
+  /* Espacio entre imagen e información */
+  gap: 30px;
+
+  /* Centra verticalmente el contenido */
+  align-items: center;
+}
+
+/* =========================================
+   IMAGEN DEL POKÉMON
+========================================= */
+
+.modal-imagen {
+  /* Fondo verde pastel */
+  background-color: #edf5ef;
+
+  /* Esquinas redondeadas */
+  border-radius: 15px;
+
+  /* Espacio interior */
+  padding: 20px;
+
+  /* Centra la imagen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-imagen img {
+  /* La imagen ocupa el ancho disponible */
+  width: 100%;
+
+  /* Evita que sea demasiado grande */
+  max-width: 260px;
+
+  /* Mantiene las proporciones */
+  object-fit: contain;
+}
+
+/* =========================================
+   INFORMACIÓN DEL POKÉMON
+========================================= */
+
+.modal-numero {
+  /* Número pequeño y discreto */
+  color: #8a9b92;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.modal-info h2 {
+  /* Tipografía con toque clásico */
+  font-family: Georgia, serif;
+
+  font-size: 32px;
+
+  /* Primera letra mayúscula */
+  text-transform: capitalize;
+
+  margin: 10px 0 15px;
+}
+
+.modal-info h3 {
+  font-size: 16px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+/* Separación entre estadísticas */
+.pokemon-stats p {
+  margin: 8px 0;
+  font-size: 13px;
+  color: #52645a;
+}
+
+/* =========================================
+   BOTÓN CERRAR
+========================================= */
+
+#cerrar-modal {
+  display: block;
+
+  /* Coloca el botón a la derecha */
+  margin: 25px 0 0 auto;
+
+  padding: 10px 20px;
+
+  background-color: #e7eee9;
+  color: #344b3e;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+/* TABLETS */
+
 @media (max-width: 768px) {
-  #pokedex {
-    /* Cambia las 3 columnas originales por 2 columnas iguales */
-    grid-template-columns: repeat(2, 1fr);
+  #contenedor {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* MÓVILES */
+
 @media (max-width: 480px) {
-  #pokedex {
-    /* Muestra una sola columna. Cada tarjeta ocupa todo el ancho disponible del grid */
+  #contenedor {
     grid-template-columns: 1fr;
+  }
+}
+
+/* MODAL */
+
+@media (max-width: 650px) {
+  .modal-layout {
+    /* Una sola columna en móviles */
+    grid-template-columns: 1fr;
+  }
+
+  #pokemon-modal {
+    padding: 20px;
+  }
+
+  .modal-imagen img {
+    max-width: 180px;
   }
 }
