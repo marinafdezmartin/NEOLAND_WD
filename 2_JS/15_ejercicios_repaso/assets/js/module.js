@@ -11,6 +11,24 @@ import {
   comprarCoche,
   simularLanzamientoMoneda,
   verificarArray,
+  numeroPar,
+  login,
+  contadorPromesa,
+  ejercicio31,
+  ejercicio32,
+  ejercicio33,
+  ejercicio34,
+  ejercicio35,
+  ejercicio36,
+  ejercicio37,
+  ejercicio38,
+  ejercicio39,
+  ejercicio40,
+  ejercicio41,
+  ejercicio42,
+  ejercicio43,
+  ejercicio44,
+  ejercicio45,
 } from "./promesas.js";
 
 saludar().then((resultado) => {
@@ -150,6 +168,124 @@ async function ejercicio24() {
 ejercicio24();
 
 verificarArray([2, 3, 4])
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+numeroPar(34)
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+login("marina", "1234")
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error.message);
+    login("admin", "1234")
+      .then((resultado) => {
+        console.log(resultado);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  });
+
+contadorPromesa().then((resultado) => {
+  console.log("Contador finalizado: ", resultado);
+});
+ejercicio31(3, 5).then((resultado) => {
+  console.log(resultado);
+});
+
+ejercicio32("juan").then((resultado) => {
+  console.log(resultado);
+});
+
+ejercicio33("secreta").catch((error) => {
+  console.error(error.message);
+});
+
+ejercicio34(100, true)
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+ejercicio35([1, 2, 3]).then((resultado) => {
+  console.log(resultado);
+});
+
+ejercicio36(false)
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error.message);
+  });
+
+ejercicio37(2, 5)
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error.message);
+  });
+
+ejercicio38("reconocer")
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error.message);
+  });
+
+ejercicio39(4, 0)
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error.message);
+  });
+
+ejercicio40({ nombre: "Ana", rol: "admin" })
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error.message);
+  });
+
+ejercicio41("Hola", 2000).then((resultado) => {
+  console.log(resultado);
+});
+
+ejercicio42(101).then((resultado) => {
+  console.log(resultado);
+});
+
+ejercicio43(50, 100).catch((error) => {
+  console.error(error);
+});
+
+ejercicio44([1, 2, "tres", 4])
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+ejercicio45(true, "hola")
   .then((resultado) => {
     console.log(resultado);
   })
