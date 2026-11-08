@@ -1,0 +1,10 @@
+// use prisma-8
+
+model Tarea {
+  id            ObjectId @id @map("_id")
+  titulo        String
+  descripcion   String?
+  completada    Bool
+
+  @@map("tareas")
+}

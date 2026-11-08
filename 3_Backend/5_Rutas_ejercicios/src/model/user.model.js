@@ -6,3 +6,10 @@ export function createNewUserModel(datos) {
     ...datos, // Copiamos nombre y correo del objeto recibido
   };
 }
+
+// EJERCICIO 3
+// Recibe el ID del usuario desde el servicio
+export function findUserByIdModel(id) {
+  // Devolvemos el ID recibido como dato simulado
+  return { id };
+}
