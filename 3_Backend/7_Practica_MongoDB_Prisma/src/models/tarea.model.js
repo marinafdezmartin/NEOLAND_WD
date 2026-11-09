@@ -15,3 +15,14 @@ export async function getTareasModel() {
 
   return tareas;
 }
+
+export async function getTareaByIdModel(id) {
+  // .where({ id: id })
+  const tarea = await db.orm.tareas.where({ id }).first();
+  return tarea;
+}
+
+export async function updateTareaModel(id, datos) {
+  const tarea = await db.orm.tareas.where({ id }).update(datos);
+  return tarea;
+}
