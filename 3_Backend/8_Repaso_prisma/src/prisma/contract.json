@@ -1,0 +1,449 @@
+{
+  "schemaVersion": "1",
+  "targetFamily": "mongo",
+  "target": "mongo",
+  "profileHash": "251b3ce23f6c9f561892e7c1af9d2cc941a13d64ba1aa7226b90036b09568cc3",
+  "roots": {
+    "posts": {
+      "model": "Post",
+      "namespace": "__unbound__"
+    },
+    "productos": {
+      "model": "Producto",
+      "namespace": "__unbound__"
+    },
+    "servicios": {
+      "model": "Servicio",
+      "namespace": "__unbound__"
+    },
+    "users": {
+      "model": "User",
+      "namespace": "__unbound__"
+    }
+  },
+  "domain": {
+    "namespaces": {
+      "__unbound__": {
+        "models": {
+          "Post": {
+            "fields": {
+              "authorId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/objectId@1",
+                  "kind": "scalar"
+                }
+              },
+              "content": {
+                "nullable": true,
+                "type": {
+                  "codecId": "mongo/string@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/objectId@1",
+                  "kind": "scalar"
+                }
+              },
+              "title": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/string@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "author": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "authorId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "__unbound__"
+                }
+              }
+            },
+            "storage": {
+              "collection": "posts",
+              "fields": {
+                "authorId": {
+                  "field": "authorId"
+                },
+                "content": {
+                  "field": "content"
+                },
+                "id": {
+                  "field": "_id"
+                },
+                "title": {
+                  "field": "title"
+                }
+              }
+            }
+          },
+          "Producto": {
+            "fields": {
+              "disponible": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/bool@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/objectId@1",
+                  "kind": "scalar"
+                }
+              },
+              "nombre": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/string@1",
+                  "kind": "scalar"
+                }
+              },
+              "precio": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/double@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {},
+            "storage": {
+              "collection": "productos",
+              "fields": {
+                "disponible": {
+                  "field": "disponible"
+                },
+                "id": {
+                  "field": "_id"
+                },
+                "nombre": {
+                  "field": "nombre"
+                },
+                "precio": {
+                  "field": "precio"
+                }
+              }
+            }
+          },
+          "Servicio": {
+            "fields": {
+              "activo": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/bool@1",
+                  "kind": "scalar"
+                }
+              },
+              "descripcion": {
+                "nullable": true,
+                "type": {
+                  "codecId": "mongo/string@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/objectId@1",
+                  "kind": "scalar"
+                }
+              },
+              "nombre": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/string@1",
+                  "kind": "scalar"
+                }
+              },
+              "precio": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/double@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {},
+            "storage": {
+              "collection": "servicios",
+              "fields": {
+                "activo": {
+                  "field": "activo"
+                },
+                "descripcion": {
+                  "field": "descripcion"
+                },
+                "id": {
+                  "field": "_id"
+                },
+                "nombre": {
+                  "field": "nombre"
+                },
+                "precio": {
+                  "field": "precio"
+                }
+              }
+            }
+          },
+          "User": {
+            "fields": {
+              "email": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/string@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "mongo/objectId@1",
+                  "kind": "scalar"
+                }
+              },
+              "name": {
+                "nullable": true,
+                "type": {
+                  "codecId": "mongo/string@1",
+                  "kind": "scalar"
+                }
+              },
+              "username": {
+                "nullable": true,
+                "type": {
+                  "codecId": "mongo/string@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "posts": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "authorId"
+                  ]
+                },
+                "to": {
+                  "model": "Post",
+                  "namespace": "__unbound__"
+                }
+              }
+            },
+            "storage": {
+              "collection": "users",
+              "fields": {
+                "email": {
+                  "field": "email"
+                },
+                "id": {
+                  "field": "_id"
+                },
+                "name": {
+                  "field": "name"
+                },
+                "username": {
+                  "field": "username"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "storage": {
+    "namespaces": {
+      "__unbound__": {
+        "entries": {
+          "collection": {
+            "posts": {
+              "kind": "mongo-collection",
+              "validator": {
+                "jsonSchema": {
+                  "additionalProperties": false,
+                  "bsonType": "object",
+                  "properties": {
+                    "_id": {
+                      "bsonType": "objectId"
+                    },
+                    "authorId": {
+                      "bsonType": "objectId"
+                    },
+                    "content": {
+                      "bsonType": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    "title": {
+                      "bsonType": "string"
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "authorId",
+                    "title"
+                  ]
+                },
+                "kind": "mongo-validator",
+                "validationAction": "error",
+                "validationLevel": "strict"
+              }
+            },
+            "productos": {
+              "kind": "mongo-collection",
+              "validator": {
+                "jsonSchema": {
+                  "additionalProperties": false,
+                  "bsonType": "object",
+                  "properties": {
+                    "_id": {
+                      "bsonType": "objectId"
+                    },
+                    "disponible": {
+                      "bsonType": "bool"
+                    },
+                    "nombre": {
+                      "bsonType": "string"
+                    },
+                    "precio": {
+                      "bsonType": "double"
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "disponible",
+                    "nombre",
+                    "precio"
+                  ]
+                },
+                "kind": "mongo-validator",
+                "validationAction": "error",
+                "validationLevel": "strict"
+              }
+            },
+            "servicios": {
+              "kind": "mongo-collection",
+              "validator": {
+                "jsonSchema": {
+                  "additionalProperties": false,
+                  "bsonType": "object",
+                  "properties": {
+                    "_id": {
+                      "bsonType": "objectId"
+                    },
+                    "activo": {
+                      "bsonType": "bool"
+                    },
+                    "descripcion": {
+                      "bsonType": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    "nombre": {
+                      "bsonType": "string"
+                    },
+                    "precio": {
+                      "bsonType": "double"
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "activo",
+                    "nombre",
+                    "precio"
+                  ]
+                },
+                "kind": "mongo-validator",
+                "validationAction": "error",
+                "validationLevel": "strict"
+              }
+            },
+            "users": {
+              "indexes": [
+                {
+                  "keys": [
+                    {
+                      "direction": 1,
+                      "field": "email"
+                    }
+                  ],
+                  "kind": "mongo-index",
+                  "name": "email_1",
+                  "unique": true
+                }
+              ],
+              "kind": "mongo-collection",
+              "validator": {
+                "jsonSchema": {
+                  "additionalProperties": false,
+                  "bsonType": "object",
+                  "properties": {
+                    "_id": {
+                      "bsonType": "objectId"
+                    },
+                    "email": {
+                      "bsonType": "string"
+                    },
+                    "name": {
+                      "bsonType": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    "username": {
+                      "bsonType": [
+                        "null",
+                        "string"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "email"
+                  ]
+                },
+                "kind": "mongo-validator",
+                "validationAction": "error",
+                "validationLevel": "strict"
+              }
+            }
+          }
+        },
+        "id": "__unbound__",
+        "kind": "mongo-database"
+      }
+    },
+    "storageHash": "1a706b8257daab84bbb3f98435b4f7f47a70730ed1823d5bb91f40d3ee6b02eb"
+  },
+  "capabilities": {},
+  "extensions": {},
+  "meta": {},
+  "_generated": {
+    "warning": "⚠️  GENERATED FILE - DO NOT EDIT",
+    "message": "This file is automatically generated by \"prisma contract emit\".",
+    "regenerate": "To regenerate, run: prisma contract emit"
+  }
+}
