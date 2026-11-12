@@ -53,6 +53,7 @@ export async function loginService(body) {
         email: user.email,
         name: user.name,
         username: user.username,
+        ashfgdj: "asffertg",
       },
       token: token,
     },
