@@ -23,7 +23,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'7d8ea088416fe83801baeec8dfe67fec564272fcda512aa52bc69ec96e2ec5cd'>;
+  StorageHashBase<'21d651fe3a3711d9fb38d6510276d65b8352af6480f3a1003df12cb07251c4aa'>;
 export type ExecutionHash =
   ExecutionHashBase<'58f5b8b442672cb6b62010ad441126c772e519fd7a8666337fda35a2599cf7bd'>;
 export type ProfileHash =
@@ -324,6 +324,7 @@ export namespace Models {
     email: FieldOutputTypes['repaso_supabase']['User']['email'];
     id: FieldOutputTypes['repaso_supabase']['User']['id'];
     name: FieldOutputTypes['repaso_supabase']['User']['name'];
+    password: FieldOutputTypes['repaso_supabase']['User']['password'];
     updatedAt: FieldOutputTypes['repaso_supabase']['User']['updatedAt'];
     username: FieldOutputTypes['repaso_supabase']['User']['username'];
     posts: repaso_supabase_Post[];
@@ -464,6 +465,12 @@ type ContractBase = Omit<
                   readonly nullable: true;
                   readonly many: false;
                 };
+                readonly password: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
                 readonly updatedAt: {
                   readonly dataType: 'pg/timestamptz';
                   readonly codecId: 'pg/timestamptz-date@1';
@@ -585,6 +592,10 @@ type ContractBase = Omit<
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
+              readonly password: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
               readonly updatedAt: {
                 readonly nullable: false;
                 readonly type: {
@@ -619,6 +630,7 @@ type ContractBase = Omit<
                 readonly email: { readonly column: 'email' };
                 readonly id: { readonly column: 'id' };
                 readonly name: { readonly column: 'name' };
+                readonly password: { readonly column: 'password' };
                 readonly updatedAt: { readonly column: 'updatedAt' };
                 readonly username: { readonly column: 'username' };
               };
