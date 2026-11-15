@@ -1,4 +1,8 @@
-// use prisma-8
+ // use prisma-8
+
+types {
+  Embedding768 = pgvector.Vector(768)
+}
 
 namespace repaso_supabase {
 
@@ -8,6 +12,8 @@ namespace repaso_supabase {
     username  String?
     name      String?
     password  String?
+    address   String?
+    embedding Embedding768?
     posts     Post[]
     createdAt DateTime           @default(now()) @onCreate(now())
     updatedAt temporal.UpdatedAt
@@ -22,5 +28,4 @@ namespace repaso_supabase {
     createdAt DateTime           @default(now()) @onCreate(now())
     updatedAt temporal.UpdatedAt
   }
-
 }
