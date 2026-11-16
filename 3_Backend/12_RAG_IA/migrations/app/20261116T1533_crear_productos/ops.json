@@ -1,0 +1,68 @@
+[
+  {
+    "id": "schema.public",
+    "label": "Create schema \"public\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres"
+    },
+    "precheck": [],
+    "execute": [
+      {
+        "description": "Create schema \"public\"",
+        "sql": "CREATE SCHEMA IF NOT EXISTS \"public\"",
+        "params": []
+      }
+    ],
+    "postcheck": []
+  },
+  {
+    "id": "table.productos",
+    "label": "Create table \"productos\"",
+    "summary": "Creates table \"productos\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "productos"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"productos\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"productos\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"productos\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"productos\"",
+        "sql": "CREATE TABLE \"public\".\"productos\" (\n  \"cantidad\" int4 NOT NULL,\n  \"descripcion\" text NOT NULL,\n  \"embedding\" vector(768),\n  \"id\" SERIAL NOT NULL,\n  \"nombre\" text NOT NULL,\n  \"precio\" float8 NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"productos\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"productos\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"productos\""
+        }
+      }
+    ]
+  }
+]

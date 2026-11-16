@@ -1,0 +1,14 @@
+// use prisma-8
+
+namespace rag {
+  model Producto {
+    id          Int                   @id @default(autoincrement())
+    nombre      String
+    precio      Float
+    cantidad    Int
+    descripcion String
+    embedding   pgvector.Vector(768)?
+
+    @@map("productos")
+  }
+}
