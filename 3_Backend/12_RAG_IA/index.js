@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import productRouter from './src/routes/product.router.js';
+import ragRouter from './src/routes/rag.router.js';
 
 // Carga las variables del archivo .env.
 dotenv.config();
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/productos', productRouter);
+app.use('/api/rag', ragRouter);
 
 // Devuelve errores de JSON y del servidor sin exponer detalles internos.
 app.use((error, req, res, next) => {

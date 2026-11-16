@@ -7,7 +7,7 @@ export const getProductsModel = async () => {
     .all();
 };
 
-export const createProductModel = async ({ nombre, precio, cantidad, descripcion }) => {
+export const createProductModel = async ({ nombre, precio, cantidad, descripcion, embedding }) => {
   return db.orm.rag.Producto
     .select('id', 'nombre', 'precio', 'cantidad', 'descripcion')
     .create({
@@ -15,7 +15,17 @@ export const createProductModel = async ({ nombre, precio, cantidad, descripcion
       precio,
       cantidad,
       descripcion,
-      // El embedding se generará en una fase posterior.
-      embedding: null,
+      // Prisma convierte el array al formato vector de PostgreSQL.
+      embedding,
     });
+};
+
+export const getNearestProductsModel = async (vector, limit = 5) => {
+  return db.orm.rag.Producto.using
+    .embedding_nearest(vector)
+    // Un producto sin embedding no puede compararse semánticamente.
+    .where((producto) => producto.embedding.isNotNull())
+    .select('id', 'nombre', 'precio', 'cantidad', 'descripcion')
+    .limit(limit)
+    .all();
 };
