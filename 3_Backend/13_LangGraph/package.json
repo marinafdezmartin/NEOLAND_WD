@@ -1,0 +1,20 @@
+{
+  "name": "13_langgraph",
+  "version": "1.0.0",
+  "description": "Ejercicio progresivo de LangChain y LangGraph del bootcamp",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "chat": "node index.rl.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@langchain/core": "^1.4.1",
+    "@langchain/groq": "^1.3.1",
+    "@langchain/langgraph": "^1.7.5",
+    "dotenv": "^18.0.10",
+    "ws": "^8.23.0",
+    "zod": "^4.6.7"
+  }
+}

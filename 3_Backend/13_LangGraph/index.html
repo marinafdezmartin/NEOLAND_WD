@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat con LangGraph</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 24px auto;
+        padding: 0 16px;
+        color: #222;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      #estado {
+        color: #555;
+      }
+
+      #chat {
+        height: 320px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 12px;
+        margin-bottom: 16px;
+      }
+
+      #chat p {
+        margin: 0 0 12px;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      .usuario {
+        color: #174ea6;
+      }
+
+      .ia {
+        color: #176b35;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .entrada {
+        display: flex;
+        gap: 8px;
+      }
+
+      input {
+        flex: 1;
+        min-width: 0;
+      }
+
+      input,
+      button {
+        padding: 10px;
+        font: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chat con LangGraph</h1>
+    <p id="estado" role="status">Conectando con el servidor…</p>
+    <div id="chat" role="log" aria-live="polite" aria-label="Conversación"></div>
+
+    <form id="formulario">
+      <label for="mensaje">Tu pregunta</label>
+      <div class="entrada">
+        <input
+          id="mensaje"
+          type="text"
+          placeholder="Escribe aquí…"
+          autocomplete="off"
+          disabled
+        />
+        <button id="enviar" type="submit" disabled>Enviar</button>
+      </div>
+    </form>
+
+    <script>
+      const chat = document.getElementById("chat");
+      const estado = document.getElementById("estado");
+      const formulario = document.getElementById("formulario");
+      const input = document.getElementById("mensaje");
+      const boton = document.getElementById("enviar");
+      // El navegador abre un canal con index.js; ambos extremos intercambian texto plano.
+      const socket = new WebSocket("ws://localhost:8080");
+
+      // El aviso y los controles reflejan si podemos enviar mensajes al servidor.
+      function actualizarConexion(conectado, aviso) {
+        estado.textContent = aviso;
+        input.disabled = !conectado;
+        boton.disabled = !conectado;
+      }
+
+      // textContent muestra los mensajes como texto, sin ejecutar HTML del usuario o de la IA.
+      // Tras añadirlos desplazamos el historial para que se vea el mensaje más reciente.
+      function agregarMensaje(autor, texto, clase) {
+        const parrafo = document.createElement("p");
+        parrafo.className = clase;
+        parrafo.textContent = `${autor}: ${texto}`;
+        chat.appendChild(parrafo);
+        chat.scrollTop = chat.scrollHeight;
+      }
+
+      // Solo habilitamos el envío cuando el navegador confirma que el canal está abierto.
+      socket.onopen = () => {
+        actualizarConexion(true, "Conectado al servidor.");
+        input.focus();
+      };
+
+      // Si se pierde la conexión bloqueamos el envío; recargar la página abre una nueva conexión.
+      socket.onclose = () => {
+        actualizarConexion(
+          false,
+          "Desconectado. Inicia el servidor con node index.js y recarga esta página."
+        );
+      };
+
+      socket.onerror = () => {
+        actualizarConexion(
+          false,
+          "No se pudo mantener la conexión. Comprueba que el servidor está iniciado y recarga esta página."
+        );
+      };
+
+      // evento.data es el texto que index.js devuelve tras completar el recorrido del grafo.
+      socket.onmessage = (evento) => {
+        agregarMensaje("IA", evento.data, "ia");
+      };
+
+      // El formulario permite enviar tanto con el botón como con Enter.
+      formulario.addEventListener("submit", (evento) => {
+        // Evitamos que el formulario recargue la página y comprobamos el texto antes de enviarlo.
+        evento.preventDefault();
+        const texto = input.value.trim();
+        if (!texto) return;
+
+        // Comprobamos de nuevo el canal por si se cerró desde que se habilitó el botón.
+        if (socket.readyState !== WebSocket.OPEN) {
+          actualizarConexion(
+            false,
+            "El servidor está desconectado. Inícialo con node index.js y recarga esta página."
+          );
+          return;
+        }
+
+        // Mostramos la pregunta y la enviamos; la respuesta llegará después por onmessage.
+        agregarMensaje("Tú", texto, "usuario");
+        socket.send(texto);
+        input.value = "";
+        input.focus();
+      });
+    </script>
+  </body>
+</html>
