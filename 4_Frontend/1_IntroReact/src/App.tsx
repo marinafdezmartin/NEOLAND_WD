@@ -1,5 +1,28 @@
+import { useState } from "react";
+import { Outlet } from "react-router";
+import { Navbar } from "./components/Navbar";
+import "./App.css";
+
 function App() {
-  return <h1>Mi landing</h1>;
+  const [totalLikes, setTotalLikes] = useState(0);
+
+  function sumarLike() {
+    setTotalLikes((totalAnterior) => totalAnterior + 1);
+  }
+
+  return (
+    <>
+      <Navbar totalLikes={totalLikes} />
+
+      <main>
+        <Outlet context={{ sumarLike }} />
+      </main>
+
+      <footer className="bg-dark text-white text-center py-3 mt-5">
+        © 2026 Mi Cafetería
+      </footer>
+    </>
+  );
 }
 
 export default App;
