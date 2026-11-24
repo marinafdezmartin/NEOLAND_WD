@@ -1,0 +1,306 @@
+/* COLORES GENERALES */
+
+:root {
+  --cafe-oscuro: #292019;
+  --cafe-medio: #7a4e34;
+  --caramelo: #bc855d;
+  --crema: #f8f5f0;
+  --blanco: #ffffff;
+  --texto-suave: #766a60;
+}
+
+/* NAVBAR */
+
+.navbar.bg-dark {
+  background-color: var(--cafe-oscuro) !important;
+  padding: 20px 5% !important;
+  border: none;
+}
+
+.navbar-brand {
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+}
+
+.navbar .nav-link {
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar .nav-link:hover {
+  color: #e9c4a1 !important;
+}
+
+.navbar .text-white {
+  font-size: 16px;
+}
+
+/* HERO */
+
+.hero-section {
+  min-height: 490px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 85px 24px;
+
+  background:
+    linear-gradient(rgba(27, 19, 14, 0.78), rgba(27, 19, 14, 0.68)),
+    url("https://images.unsplash.com/photo-1724399285100-cc21f22acff8?auto=format&fit=crop&w=1600&q=85");
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-section .container {
+  max-width: 850px;
+}
+
+.hero-eyebrow {
+  color: #e9c4a1;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.hero-title {
+  color: #ffffff;
+  font-family: Georgia, serif;
+  font-size: clamp(42px, 5vw, 70px);
+  font-weight: normal;
+  line-height: 1.12;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  color: #f1e8e0;
+  font-size: 19px;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.btn-coffee {
+  background-color: var(--caramelo);
+  border: 1px solid var(--caramelo);
+  border-radius: 6px;
+  color: #21160f;
+  font-weight: 600;
+  padding: 13px 30px;
+  transition: all 0.2s;
+}
+
+.btn-coffee:hover {
+  background-color: #d09b73;
+  border-color: #d09b73;
+  color: #21160f;
+  transform: translateY(-2px);
+}
+
+/* SECCIÓN DE PRODUCTOS */
+
+main section.container.py-4 {
+  padding-top: 75px !important;
+  padding-bottom: 90px !important;
+}
+
+main section.container.py-4 h2 {
+  font-family: Georgia, serif;
+  font-size: 38px;
+  color: var(--cafe-oscuro);
+  margin-bottom: 25px !important;
+  text-align: center;
+}
+
+main section.container.py-4 > button {
+  display: block;
+  margin: 0 auto 35px !important;
+  padding: 11px 25px;
+  border-radius: 30px;
+  border: 1px solid var(--cafe-medio);
+  color: var(--cafe-medio);
+  background-color: transparent;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+main section.container.py-4 > button:hover {
+  background-color: var(--cafe-medio);
+  color: white;
+}
+
+/* TARJETAS */
+
+main .card {
+  background-color: var(--blanco);
+  border: 1px solid #eae2d9;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(41, 32, 25, 0.05);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  overflow: hidden;
+}
+
+main .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(41, 32, 25, 0.12);
+}
+
+main .card-body {
+  padding: 32px 20px;
+  text-align: center;
+}
+
+main .card-title {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  color: var(--cafe-oscuro);
+  margin-bottom: 12px;
+}
+
+main .card-text {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--cafe-medio);
+  margin-bottom: 16px;
+}
+
+/* ETIQUETAS DESTACADO */
+
+main .badge.bg-warning {
+  background-color: #f3e4d1 !important;
+  color: #845632 !important;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+/* BOTONES ME GUSTA */
+
+main .btn-outline-danger {
+  color: var(--cafe-medio);
+  border-color: #d3b8a2;
+  border-radius: 25px;
+  padding: 8px 17px;
+  font-size: 13px;
+}
+
+main .btn-outline-danger:hover {
+  color: white;
+  background-color: var(--cafe-medio);
+  border-color: var(--cafe-medio);
+}
+
+/* PÁGINAS INTERIORES */
+
+main > section.container.py-5 {
+  margin-top: 65px;
+  margin-bottom: 80px;
+  padding: 45px !important;
+  background-color: white;
+  border: 1px solid #eee5db;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(41, 32, 25, 0.05);
+}
+
+main > section.container.py-5 h1 {
+  font-family: Georgia, serif;
+  font-size: 40px;
+  color: var(--cafe-oscuro);
+  margin-bottom: 25px;
+}
+
+main > section.container.py-5 p {
+  color: var(--texto-suave);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* FORMULARIO DE CONTACTO */
+
+main .form-control {
+  padding: 13px 16px;
+  border: 1px solid #ded4c8;
+  border-radius: 7px;
+}
+
+main .form-control:focus {
+  border-color: var(--caramelo);
+  box-shadow: 0 0 0 3px rgba(188, 133, 93, 0.15);
+}
+
+main .btn-primary {
+  background-color: var(--cafe-medio);
+  border-color: var(--cafe-medio);
+  padding: 11px 25px;
+  border-radius: 6px;
+}
+
+main .btn-primary:hover {
+  background-color: var(--cafe-oscuro);
+  border-color: var(--cafe-oscuro);
+}
+
+main .btn-primary:disabled {
+  background-color: #c9b8aa;
+  border-color: #c9b8aa;
+}
+
+/* FOOTER */
+
+footer.bg-dark {
+  background-color: var(--cafe-oscuro) !important;
+  color: #dfd1c4 !important;
+  padding: 28px !important;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .navbar.bg-dark {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .navbar .d-flex {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-section {
+    min-height: 420px;
+    padding: 75px 20px;
+  }
+
+  .hero-title {
+    font-size: 42px;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+  }
+
+  main section.container.py-4 {
+    padding-top: 55px !important;
+    padding-bottom: 60px !important;
+  }
+
+  main section.container.py-4 h2 {
+    font-size: 32px;
+  }
+
+  main > section.container.py-5 {
+    margin-top: 30px;
+    padding: 25px !important;
+  }
+}
